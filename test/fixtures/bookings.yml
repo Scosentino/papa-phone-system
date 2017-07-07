@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  twilio_contact: steve
+  name: Smith
+  email: test@email.com
+  phone: +19998889999
+  business: yes - Smith Co
+  booking_type: Tradeshow
+  date: tomorrow
+  hours: ten
+  talent: 20
+  budget: A
+
+two:
+  twilio_contact:
+  name: Jones
+  email: test@email.com
+  phone: +19998889999
+  business: Yes - Smith and Westin
+  booking_type: Tradeshow
+  date: june 5
+  hours: ten
+  talent: 20
+  budget: B

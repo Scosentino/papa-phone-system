@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  from_number: MyString
+  to_number: MyString
+  message_body: MyText
+  message_type: MyString
+  twilio_contact_id: 
+
+two:
+  from_number: MyString
+  to_number: MyString
+  message_body: MyText
+  message_type: MyString
+  twilio_contact_id: 

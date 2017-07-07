@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV['POSTGRES_USER'] %>
+  password: <%= ENV['POSTGRES_PASS'] %>
+
+development:
+  <<: *default
+  database: kat_phone_app_development
+test:
+  <<: *default
+  database: kat_phone_app_test
+#production:
+#  <<: *default
+#  database: phone_app_production
+#  username:
+#  password: <%= ENV['KAT_RAILS_DATABASE_PASSWORD'] %>
+#staging:
+#  <<: *default
+#  database: phone_app_production
+#  username:
+#  password: <%= ENV['KAT_RAILS_DATABASE_PASSWORD'] %>

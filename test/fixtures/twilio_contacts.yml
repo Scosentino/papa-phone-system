@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  phone: +18889990000
+  sms_step: MyString
+  sms_contact: MyString
+
+steve:
+  phone: MyString
+  sms_step: MyString
+  sms_contact: MyString
