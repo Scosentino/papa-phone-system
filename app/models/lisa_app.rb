@@ -1,14 +1,14 @@
 require 'httparty'
 
-class KatApp
+class lisaApp
   include HTTParty
 
   def self.server(url, booking)
     headers = {
-        'Authorization' => ENV['kat_app_admin_token']
+        'Authorization' => ENV['lisa_app_admin_token']
     }
     params = {
-        api_key: ENV['kat_app_admin_api_key'],
+        api_key: ENV['lisa_app_admin_api_key'],
         name: booking.name,
         email: booking.email,
         phone: booking.phone,

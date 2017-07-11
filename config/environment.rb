@@ -7,7 +7,7 @@ Rails.application.initialize!
 ActionMailer::Base.smtp_settings = {
     :address => 'smtp.mailgun.org',
     :port => 587,
-    :user_name => ENV['kat_phone_mailgun_username'],
-    :password => ENV['kat_phone_mailgun_password'],
+    :user_name => ENV['lisa_phone_mailgun_username'],
+    :password => ENV['lisa_phone_mailgun_password'],
     :authentication => :plain,
 }

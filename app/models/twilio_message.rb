@@ -1,6 +1,6 @@
 class TwilioMessage < ActiveRecord::Base
   WELCOME_MESSAGE = <<EOF
-Hello my name is Quinn and Welcome to the Kat agency!
+Hello my name is Lisa and Welcome to PAPA!
 EOF
   INSTRUCTIONS = <<EOF
 If you would like to make a Booking Request, Reply ‘Booking’
@@ -8,11 +8,9 @@ To get in contact with a real human, type ‘Contact’
 To connect with Technology Support, reply ‘Support’
 EOF
   STAFF_NUMBERS = {
-      'kat' => '+14432041282',
-      'jordan' => '+14156016003',
+      'andrew' => '+17542240411'
       'sean' => '+13057266671',
-      'mayra' => '',
-      'iohana' => ''
+
   }
   INVALID_RESPONSE = "Sorry that was an invalid response try again or type 'Main Menu'"
 
@@ -94,13 +92,13 @@ EOF
               else
                 booking.update(business: body)
               end
-              booking_response(from_number, 'Please select from the following Booking Types: Tradeshow, Event, Modeling, other', step + 1)
+              booking_response(from_number, 'Please select from the following Booking Types: Inside, Outside', step + 1)
           end
         end
       when 5
         #Save business response in case of no
         @contact.bookings.last.update(business: body)
-        booking_response(from_number, 'Please select from the following Booking Types: Tradeshow, Event, Modeling, other', step)
+        booking_response(from_number, 'Please select from the following Booking Types: Inside, Outside', step)
       when 6
         # Save booking type
         @contact.bookings.last.update(booking_type: body)
@@ -118,10 +116,10 @@ EOF
         @contact.bookings.last.update(talent: body)
         booking_response(from_number, 'What is your budget, A: Less than $5,000 | B: Greater than $5,000?', step)
       when 10
-        # Save last piece of booking information and send to KatApp
+        # Save last piece of booking information and send to lisaApp
         booking = @contact.bookings.last
         booking.update(budget: body)
-        KatApp.server(ENV['kat_app_booking_request_url'], booking)
+        lisaApp.server(ENV['lisa_app_booking_request_url'], booking)
         send_message(from_number, 'Great! Thanks for the information. We\'ll be reaching out shortly.')
         set_type(@contact, 'welcome')
         send_message(from_number, 'Going back to the main menu.')
@@ -135,16 +133,14 @@ EOF
     # IF type is set to Contact, continue messaging thread
     if type =~ /contact/i
       case body
-        when /^kat$/i then forward_contact('kat', number)
-        when /^jordan$/i then forward_contact('jordan', number)
+        when /^lisa$/i then forward_contact('lisa', number)
+        when /^andrew$/i then forward_contact('andrew', number)
         when /^sean$/i then forward_contact('sean', number)
-        when /^mayra$/i then forward_contact('mayra', number)
-        when /^iohana$/i then forward_contact('iohana', number)
         else send_message(number, INVALID_RESPONSE)
       end
     else
       set_type(@contact, 'contact')
-      send_message(number, "Thank you for reaching out, to speak with one of our experts please reply with the name of the person whom you’d like to speak with. (Kat, Jordan, Sean, Mayra, Iohan)")
+      send_message(number, "Thank you for reaching out, to speak with one of our experts please reply with the name of the person whom you’d like to speak with. (lisa, Andrew, Sean)")
     end
   end
 
